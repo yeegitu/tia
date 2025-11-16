@@ -5,10 +5,8 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const bgPhotos = [
-  "/photos/1.jpeg",
-  "/photos/2.jpeg",
-  "/photos/3.jpeg",
-  "/photos/4.jpeg",
+  "/photos/bg1.jpeg",
+  "/photos/bg2.jpeg",
 ];
 
 export default function BackgroundCarousel() {

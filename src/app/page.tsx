@@ -14,23 +14,31 @@ export default function Home() {
       <BackgroundCarousel />
 
       {/* Judul */}
-      <header className="z-10 text-center mt-16">
-        <h1 className="text-5xl font-extrabold text-slate-800 drop-shadow-md">
-          Our Moments
-        </h1>
-        <p className="text-slate-600 mt-2 italic">
-          Sebuah cerita indah dalam foto-foto 💫
+      <header className="z-10 text-center mt-16 px-4">
+        <div className="inline-block">
+          <h1 className="text-[10vw] md:text-7xl font-bold bg-gradient-to-r from-rose-500 via-pink-400 to-orange-400 bg-clip-text text-transparent drop-shadow-2xl mb-3 tracking-tight">
+            MY GALLERY
+          </h1>
+
+          <div className="h-1 w-full bg-gradient-to-r from-rose-400 via-pink-300 to-orange-300 rounded-full mb-4"></div>
+        </div>
+
+        {/* Teks di bawah judul, otomatis di baris kedua di mobile */}
+        <p className="text-[4vw] md:text-xl text-rose-800 font-medium mt-4 text-center">
+          ✨ <span className="italic">Sebuah cerita indah dalam foto-foto</span> 💫
         </p>
       </header>
+
+
 
       {/* Galeri Foto */}
       <Gallery />
 
       {/* Pemutar Musik */}
-      <MusicPlayer /> {/* 🎶 Musik Player */}
+      <MusicPlayer />
 
-      {/* Kata-kata semangat */}
-<MotivationalWords />
+      {/* Kata-kata Semangat */}
+      <MotivationalWords />
     </main>
   );
 }

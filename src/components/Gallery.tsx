@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, ChevronLeft, ChevronRight } from "lucide-react";
+import { Heart } from "lucide-react";
 import Image from "next/image";
 
 // 30 kata romantis
@@ -17,29 +17,10 @@ const captions = [
   "Our Little World",
   "Pure Happiness",
   "My Favorite Person",
-  "Love Without End",
-  "Sweet Smile",
-  "Together Forever",
-  "My Better Half",
-  "Dream Come True",
-  "Holding You Close",
-  "Love in Every Moment",
-  "With You Always",
-  "My Perfect Match",
-  "Promise of Forever",
-  "Beautiful Soul",
-  "My Safe Place",
-  "Love Story",
-  "Precious Gift",
-  "You & Me",
-  "Our Universe",
-  "Warm Embrace",
-  "Forever Yours",
-  "Eternal Love",
 ];
 
 // ganti length sesuai jumlah fotomu
-const photos = Array.from({ length: 20 }, (_, i) => ({
+const photos = Array.from({ length: 11 }, (_, i) => ({
   src: `/photos/${i + 1}.jpeg`,
   gradient: "from-rose-500/20 to-pink-500/20",
   title: captions[i],
@@ -59,21 +40,6 @@ export default function GalleryCarousel() {
     return () => clearInterval(interval);
   }, []);
 
-  const goToNext = () => {
-    setDirection(1);
-    setIndex((prev) => (prev + 1) % photos.length);
-  };
-
-  const goToPrev = () => {
-    setDirection(-1);
-    setIndex((prev) => (prev - 1 + photos.length) % photos.length);
-  };
-
-  const goToSlide = (i: number) => {
-    setDirection(i > index ? 1 : -1);
-    setIndex(i);
-  };
-
   return (
     <div className="relative w-full max-w-2xl mx-auto mt-12 px-4">
       {/* Main carousel container */}
@@ -89,19 +55,19 @@ export default function GalleryCarousel() {
               key={i}
               className="absolute text-rose-300/40"
               style={{
-                left: `${20 + (i * 12)}%`,
-                top: `${15 + (i * 10)}%`,
+                left: `${20 + i * 12}%`,
+                top: `${15 + i * 10}%`,
               }}
               animate={{
                 y: [0, -20, 0],
                 opacity: [0.2, 0.6, 0.2],
-                scale: [0.8, 1.2, 0.8]
+                scale: [0.8, 1.2, 0.8],
               }}
               transition={{
                 duration: 3 + i * 0.5,
                 repeat: Infinity,
                 delay: i * 0.8,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             >
               <Heart size={16} fill="currentColor" />
@@ -115,27 +81,27 @@ export default function GalleryCarousel() {
             <motion.div
               key={index}
               className="relative"
-              initial={{ 
-                opacity: 0, 
+              initial={{
+                opacity: 0,
                 x: direction * 100,
                 scale: 0.9,
-                rotateY: direction * 15
+                rotateY: direction * 15,
               }}
-              animate={{ 
-                opacity: 1, 
+              animate={{
+                opacity: 1,
                 x: 0,
                 scale: 1,
-                rotateY: 0
+                rotateY: 0,
               }}
-              exit={{ 
-                opacity: 0, 
+              exit={{
+                opacity: 0,
                 x: direction * -100,
                 scale: 0.9,
-                rotateY: direction * -15
+                rotateY: direction * -15,
               }}
-              transition={{ 
+              transition={{
                 duration: 0.8,
-                ease: "easeInOut"
+                ease: "easeInOut",
               }}
             >
               {/* Photo frame */}
@@ -153,7 +119,7 @@ export default function GalleryCarousel() {
                 />
                 
                 {/* Photo title */}
-                <motion.div 
+                <motion.div
                   className="absolute bottom-4 left-4 right-4 z-20"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -169,12 +135,12 @@ export default function GalleryCarousel() {
                   className="absolute top-4 right-4 text-yellow-300 z-20"
                   animate={{
                     rotate: [0, 180, 360],
-                    scale: [1, 1.2, 1]
+                    scale: [1, 1.2, 1],
                   }}
                   transition={{
                     duration: 4,
                     repeat: Infinity,
-                    ease: "linear"
+                    ease: "linear",
                   }}
                 >
                   ✨
@@ -184,24 +150,6 @@ export default function GalleryCarousel() {
           </AnimatePresence>
         </div>
 
-        {/* Navigation buttons */}
-        <motion.button
-          onClick={goToPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:bg-white transition-colors z-20"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ChevronLeft size={20} />
-        </motion.button>
-
-        <motion.button
-          onClick={goToNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full shadow-lg flex items-center justify-center text-gray-700 hover:bg-white transition-colors z-20"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ChevronRight size={20} />
-        </motion.button>
       </div>
     </div>
   );
