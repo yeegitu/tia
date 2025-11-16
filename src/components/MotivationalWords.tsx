@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function FloatingWordsModern() {
   const lines = [
-    { text: "Tia Cnatikkk", size: "text-[8vw] md:text-5xl font-extrabold", isTime: false, isQuote: false },
+    { text: "Tia Cantik", size: "text-[8vw] md:text-5xl font-extrabold", isTime: false, isQuote: false },
     { text: "A woman destined to conquer the world and achieve greatness.", size: "text-sm md:text-xl font-medium", isTime: false, isQuote: true },
     { text: `${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`, size: "text-sm md:text-xl font-light", isTime: true, isQuote: false }
   ];
